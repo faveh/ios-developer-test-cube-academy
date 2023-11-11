@@ -17,6 +17,7 @@ extension TextStyle {
     static let boldHeadlineMedium = TextStyle(.poppins, weight: 700, size: 24, lineHeight: 38, letter: 0.2)
     static let boldHeadlineSmall = TextStyle(.poppins, weight: 700, size: 18, lineHeight: 24, letter: 0.2)
     static let boldHeadlineSmallest = TextStyle(.poppins, weight: 700, size: 18, lineHeight: 24, letter: 0.2)
+    static let boldHeadlineTiny = TextStyle(.poppins, weight: 700, size: 16, lineHeight: 24, letter: 0.2)
 
     // MARK: Body
 
