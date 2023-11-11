@@ -25,6 +25,9 @@
 		1BA8D9E42AE29ACD008FBB3F /* CubeFoundationSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA8D9E32AE29ACD008FBB3F /* CubeFoundationSwiftUI */; };
 		1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */; };
 		1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */; };
+		C2A755082AFFB4C600CC05EA /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A755072AFFB4C600CC05EA /* ButtonView.swift */; };
+		C2A7550B2AFFB77000CC05EA /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */; };
+		C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		1BA8D9DD2AE2962B008FBB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontName+Names.swift"; sourceTree = "<group>"; };
 		1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextStyle+Styles.swift"; sourceTree = "<group>"; };
+		C2A755072AFFB4C600CC05EA /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
+		C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,8 @@
 			children = (
 				1B8FA0822AE2B69A009E185D /* HeaderBarView.swift */,
 				1B8FA0852AE2BB92009E185D /* NominationsHeaderView.swift */,
+				C2A755072AFFB4C600CC05EA /* ButtonView.swift */,
+				C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -89,6 +97,7 @@
 		1BA8D9B72AE290D7008FBB3F /* Nominations */ = {
 			isa = PBXGroup;
 			children = (
+				C2A755092AFFB75800CC05EA /* Utilities */,
 				1BA8D9DD2AE2962B008FBB3F /* Info.plist */,
 				1BA8D9B82AE290D7008FBB3F /* NominationsApp.swift */,
 				1BA8D9BA2AE290D7008FBB3F /* ContentView.swift */,
@@ -147,6 +156,14 @@
 				1BA8D9CE2AE29617008FBB3F /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2A755092AFFB75800CC05EA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +253,10 @@
 			files = (
 				1BA8D9BB2AE290D7008FBB3F /* ContentView.swift in Sources */,
 				1B8FA0862AE2BB92009E185D /* NominationsHeaderView.swift in Sources */,
+				C2A755082AFFB4C600CC05EA /* ButtonView.swift in Sources */,
+				C2A7550B2AFFB77000CC05EA /* ThemeSettings.swift in Sources */,
 				1B8FA0832AE2B69A009E185D /* HeaderBarView.swift in Sources */,
+				C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
 				1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */,
 				1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */,
