@@ -25,6 +25,8 @@
 		1BA8D9E42AE29ACD008FBB3F /* CubeFoundationSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA8D9E32AE29ACD008FBB3F /* CubeFoundationSwiftUI */; };
 		1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */; };
 		1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */; };
+		C2331A882B00080A00FE494F /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = C2331A872B00080A00FE494F /* RswiftLibrary */; };
+		C2331A8A2B00080A00FE494F /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = C2331A892B00080A00FE494F /* rswift */; };
 		C2A755082AFFB4C600CC05EA /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A755072AFFB4C600CC05EA /* ButtonView.swift */; };
 		C2A7550B2AFFB77000CC05EA /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */; };
 		C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */; };
@@ -60,7 +62,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BA8D9E42AE29ACD008FBB3F /* CubeFoundationSwiftUI in Frameworks */,
+				C2331A8A2B00080A00FE494F /* rswift in Frameworks */,
 				1BA8D9E22AE29ACD008FBB3F /* CubeFoundation in Frameworks */,
+				C2331A882B00080A00FE494F /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,11 +184,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				C2331A8C2B00085F00FE494F /* PBXTargetDependency */,
 			);
 			name = Nominations;
 			packageProductDependencies = (
 				1BA8D9E12AE29ACD008FBB3F /* CubeFoundation */,
 				1BA8D9E32AE29ACD008FBB3F /* CubeFoundationSwiftUI */,
+				C2331A872B00080A00FE494F /* RswiftLibrary */,
+				C2331A892B00080A00FE494F /* rswift */,
 			);
 			productName = Nominations;
 			productReference = 1BA8D9B52AE290D7008FBB3F /* Nominations.app */;
@@ -217,6 +224,7 @@
 			mainGroup = 1BA8D9AC2AE290D7008FBB3F;
 			packageReferences = (
 				1BA8D9E02AE29ACD008FBB3F /* XCRemoteSwiftPackageReference "cubefoundation-ios" */,
+				C2331A862B00080900FE494F /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = 1BA8D9B62AE290D7008FBB3F /* Products */;
 			projectDirPath = "";
@@ -265,6 +273,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2331A8C2B00085F00FE494F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = C2331A8B2B00085F00FE494F /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1BA8D9C12AE290DA008FBB3F /* Debug */ = {
@@ -478,6 +493,14 @@
 				kind = branch;
 			};
 		};
+		C2331A862B00080900FE494F /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -490,6 +513,20 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1BA8D9E02AE29ACD008FBB3F /* XCRemoteSwiftPackageReference "cubefoundation-ios" */;
 			productName = CubeFoundationSwiftUI;
+		};
+		C2331A872B00080A00FE494F /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2331A862B00080900FE494F /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		C2331A892B00080A00FE494F /* rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2331A862B00080900FE494F /* XCRemoteSwiftPackageReference "R" */;
+			productName = rswift;
+		};
+		C2331A8B2B00085F00FE494F /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
