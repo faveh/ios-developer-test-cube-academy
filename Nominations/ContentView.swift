@@ -12,7 +12,8 @@ struct ContentView: View {
     @StateObject var nominationVM = NominationViewModel(service: NominationService())
     
     @State var showingNominationForm = false
-    
+    @State var showingEditNominationForm = false
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -28,6 +29,13 @@ struct ContentView: View {
                                 ForEach(nominationVM.nominations) { nomination in
                                     if let nominee = nominationVM.nominees.first(where: { $0.id == nomination.nomineeID }) {
                                         NominationItemView(name: nominee.fullName, reasoning: nomination.reason)
+                                            .onTapGesture {
+                                                nominationVM.getNomination(nominationID: nomination.id) { success in
+                                                    if success {
+                                                        self.showingEditNominationForm = true
+                                                    }
+                                                }
+                                            }
                                     }
                                 }
                             }
@@ -44,6 +52,10 @@ struct ContentView: View {
                 }
                 .navigationDestination(isPresented: $showingNominationForm) {
                     NominationFormView()
+                        .environmentObject(nominationVM)
+                }
+                .navigationDestination(isPresented: $showingEditNominationForm) {
+                    EditNominationView()
                         .environmentObject(nominationVM)
                 }
             }

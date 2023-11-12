@@ -41,6 +41,7 @@
 		C25E33882B01603C005E16D3 /* NominationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E33872B01603C005E16D3 /* NominationService.swift */; };
 		C25E338A2B016075005E16D3 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E33892B016075005E16D3 /* APIResponse.swift */; };
 		C25E338C2B01698D005E16D3 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E338B2B01698D005E16D3 /* BaseViewModel.swift */; };
+		C25E33912B018CDE005E16D3 /* EditNominationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E33902B018CDE005E16D3 /* EditNominationView.swift */; };
 		C268DB912B002100001F2F98 /* NameDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB902B002100001F2F98 /* NameDropdownView.swift */; };
 		C268DB962B00435D001F2F98 /* ReasoningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB952B00435D001F2F98 /* ReasoningTextView.swift */; };
 		C268DBA02B005A46001F2F98 /* RequiredLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB9F2B005A46001F2F98 /* RequiredLabelView.swift */; };
@@ -88,6 +89,7 @@
 		C25E33872B01603C005E16D3 /* NominationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationService.swift; sourceTree = "<group>"; };
 		C25E33892B016075005E16D3 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		C25E338B2B01698D005E16D3 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		C25E33902B018CDE005E16D3 /* EditNominationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNominationView.swift; sourceTree = "<group>"; };
 		C268DB902B002100001F2F98 /* NameDropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDropdownView.swift; sourceTree = "<group>"; };
 		C268DB952B00435D001F2F98 /* ReasoningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasoningTextView.swift; sourceTree = "<group>"; };
 		C268DB9F2B005A46001F2F98 /* RequiredLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredLabelView.swift; sourceTree = "<group>"; };
@@ -155,13 +157,14 @@
 		1BA8D9B72AE290D7008FBB3F /* Nominations */ = {
 			isa = PBXGroup;
 			children = (
+				1BA8D9B82AE290D7008FBB3F /* NominationsApp.swift */,
+				1BA8D9BA2AE290D7008FBB3F /* ContentView.swift */,
+				C268DBB22B00F873001F2F98 /* NominationFormView.swift */,
+				C25E33902B018CDE005E16D3 /* EditNominationView.swift */,
+				1BA8D9DD2AE2962B008FBB3F /* Info.plist */,
 				C25E33742B01529D005E16D3 /* ViewModel */,
 				C25E336D2B014D5C005E16D3 /* Model */,
 				C2A755092AFFB75800CC05EA /* Utilities */,
-				1BA8D9DD2AE2962B008FBB3F /* Info.plist */,
-				1BA8D9B82AE290D7008FBB3F /* NominationsApp.swift */,
-				C268DBB22B00F873001F2F98 /* NominationFormView.swift */,
-				1BA8D9BA2AE290D7008FBB3F /* ContentView.swift */,
 				1B8FA0842AE2B69E009E185D /* Components */,
 				1BA8D9DE2AE29652008FBB3F /* Resources */,
 				1BA8D9BE2AE290DA008FBB3F /* Preview Content */,
@@ -396,6 +399,7 @@
 				C268DB912B002100001F2F98 /* NameDropdownView.swift in Sources */,
 				C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */,
 				C25E338A2B016075005E16D3 /* APIResponse.swift in Sources */,
+				C25E33912B018CDE005E16D3 /* EditNominationView.swift in Sources */,
 				C268DBA82B006379001F2F98 /* NominationItemView.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
 				C25E338C2B01698D005E16D3 /* BaseViewModel.swift in Sources */,
