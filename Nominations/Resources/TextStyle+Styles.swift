@@ -31,4 +31,7 @@ extension TextStyle {
     // MARK: Navigation Bar
 
     static let navigationBar = TextStyle(.poppins, weight: 500, size: 16, lineHeight: 24)
+    
+    // MARK: Error
+    static let errorSmall = TextStyle(.poppins, weight: 400, size: 14, lineHeight: 21)
 }
