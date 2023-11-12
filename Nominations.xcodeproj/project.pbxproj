@@ -32,6 +32,9 @@
 		C268DB912B002100001F2F98 /* NameDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB902B002100001F2F98 /* NameDropdownView.swift */; };
 		C268DB962B00435D001F2F98 /* ReasoningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB952B00435D001F2F98 /* ReasoningTextView.swift */; };
 		C268DBA02B005A46001F2F98 /* RequiredLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DB9F2B005A46001F2F98 /* RequiredLabelView.swift */; };
+		C268DBA52B005EEC001F2F98 /* InputHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DBA42B005EEC001F2F98 /* InputHeaderView.swift */; };
+		C268DBA82B006379001F2F98 /* NominationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DBA72B006379001F2F98 /* NominationItemView.swift */; };
+		C268DBAC2B006631001F2F98 /* EmptyNominationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268DBAB2B006631001F2F98 /* EmptyNominationsView.swift */; };
 		C2A755082AFFB4C600CC05EA /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A755072AFFB4C600CC05EA /* ButtonView.swift */; };
 		C2A7550B2AFFB77000CC05EA /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */; };
 		C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */; };
@@ -61,6 +64,9 @@
 		C268DB902B002100001F2F98 /* NameDropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDropdownView.swift; sourceTree = "<group>"; };
 		C268DB952B00435D001F2F98 /* ReasoningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasoningTextView.swift; sourceTree = "<group>"; };
 		C268DB9F2B005A46001F2F98 /* RequiredLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredLabelView.swift; sourceTree = "<group>"; };
+		C268DBA42B005EEC001F2F98 /* InputHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHeaderView.swift; sourceTree = "<group>"; };
+		C268DBA72B006379001F2F98 /* NominationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationItemView.swift; sourceTree = "<group>"; };
+		C268DBAB2B006631001F2F98 /* EmptyNominationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNominationsView.swift; sourceTree = "<group>"; };
 		C2A755072AFFB4C600CC05EA /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		C2A7550A2AFFB77000CC05EA /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
 		C2A7550C2AFFD27B00CC05EA /* StickyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyButtonView.swift; sourceTree = "<group>"; };
@@ -92,6 +98,9 @@
 				C268DB902B002100001F2F98 /* NameDropdownView.swift */,
 				C268DB952B00435D001F2F98 /* ReasoningTextView.swift */,
 				C268DB9F2B005A46001F2F98 /* RequiredLabelView.swift */,
+				C268DBA42B005EEC001F2F98 /* InputHeaderView.swift */,
+				C268DBA72B006379001F2F98 /* NominationItemView.swift */,
+				C268DBAB2B006631001F2F98 /* EmptyNominationsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -286,16 +295,19 @@
 				1B8FA0862AE2BB92009E185D /* NominationsHeaderView.swift in Sources */,
 				C2331A952B00169800FE494F /* Rswift.swift in Sources */,
 				C2A755082AFFB4C600CC05EA /* ButtonView.swift in Sources */,
+				C268DBA52B005EEC001F2F98 /* InputHeaderView.swift in Sources */,
 				C2A7550B2AFFB77000CC05EA /* ThemeSettings.swift in Sources */,
 				1B8FA0832AE2B69A009E185D /* HeaderBarView.swift in Sources */,
 				C268DB912B002100001F2F98 /* NameDropdownView.swift in Sources */,
 				C2A7550D2AFFD27B00CC05EA /* StickyButtonView.swift in Sources */,
+				C268DBA82B006379001F2F98 /* NominationItemView.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
 				1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */,
 				1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */,
 				C2331A912B00134400FE494F /* RadioButtonView.swift in Sources */,
 				C268DB962B00435D001F2F98 /* ReasoningTextView.swift in Sources */,
 				1BA8D9CD2AE294B3008FBB3F /* FigmaShadow+Shadows.swift in Sources */,
+				C268DBAC2B006631001F2F98 /* EmptyNominationsView.swift in Sources */,
 				C268DBA02B005A46001F2F98 /* RequiredLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
