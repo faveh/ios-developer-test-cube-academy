@@ -10,13 +10,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            HeaderBarView()
-            ScrollView {
-                NominationsHeaderView()
+        ZStack {
+            VStack(spacing: 0) {
+                HeaderBarView()
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        NominationsHeaderView()
+                        ForEach(0..<20) { index in
+                            NominationItemView(name: "Nomination \(index)", reasoning: "Always goes above and beyond when it comes")
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                    .scrollIndicators(.hidden)
+                    .listStyle(.plain)
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .background(.cubeLightGrey)
+            .safeAreaInset(edge: .bottom) {
+                StickyButtonView(primaryName: "create new nomination", buttonType: .unStackedPrimary, primaryState: .active) {
+                    
+                }
             }
         }
-        .background(.cubeLightGrey)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
