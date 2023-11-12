@@ -27,7 +27,6 @@ struct SubmittedView: View {
                                 .padding(.bottom, 30)
 
                             Group {
-                                Text(ThemeSettings.shared.authToken ?? "")
                                 Text("Nomination submitted".uppercased())
                                     .style(.boldHeadlineLarge)
                                     .multilineTextAlignment(.center)

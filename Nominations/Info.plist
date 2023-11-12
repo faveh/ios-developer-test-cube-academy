@@ -12,6 +12,8 @@
 		<string>AnonymousPro-Regular.ttf</string>
 		<string>AnonymousPro-Bold.ttf</string>
 	</array>
+	<key>AuthToken</key>
+	<string>604|Nz6zljMTY6tpgmdD0RLhjKOeqFvLfcN4q31TDnQSf53aff76</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>
