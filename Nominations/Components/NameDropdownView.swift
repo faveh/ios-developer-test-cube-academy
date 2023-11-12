@@ -8,23 +8,17 @@
 
 import SwiftUI
 
-enum CubeName: String, CaseIterable, Identifiable {
-    case Fifth, Eigth, Tenth
-    var id: String { self.rawValue }
-}
-
 struct NameDropdownView: View {
-    @State private var selectedOption: CubeName = .Eigth
+    @EnvironmentObject var nominationVM: NominationViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             RequiredLabelView(label: "Cube's name")
             Spacer()
                 .frame(height: 8)
             Menu {
-                Picker("Options", selection: $selectedOption) {
-                    ForEach(CubeName.allCases) { cubeName in
-                        Text(cubeName.rawValue)
-                            .tag(cubeName)
+                Picker("nominees", selection: $nominationVM.selectedOption) {
+                    ForEach(nominationVM.nominees) { nominee in
+                        Text(nominee.fullName)
                     }
                 }
             } label: {
@@ -34,8 +28,13 @@ struct NameDropdownView: View {
                     .frame(height: ThemeSettings.shared.buttonHeight)
                     .overlay {
                         HStack {
-                            Text(selectedOption.rawValue)
-                                .style(.body)
+                            if let nominee = nominationVM.nominees.first(where: { $0.id == nominationVM.selectedOption }) {
+                                Text(nominee.fullName)
+                                    .style(.body)
+                            } else {
+                                Text("Select Option")
+                                    .style(.body)
+                            }
                             Spacer()
                             R.image.downChevron.image
                                 .resizable()

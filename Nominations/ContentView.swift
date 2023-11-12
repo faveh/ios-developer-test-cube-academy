@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    var nominations: [Nomination] = Nomination.nominations
+    @StateObject var nominationVM = NominationViewModel(service: NominationService())
+    
     @State var showingNominationForm = false
     
     var body: some View {
@@ -21,11 +22,13 @@ struct ContentView: View {
                         LazyVStack(spacing: 0) {
                             NominationsHeaderView()
                             
-                            if nominations.isEmpty {
+                            if nominationVM.nominations.isEmpty {
                                 EmptyNominationsView()
                             } else {
-                                ForEach(nominations) { nomination in
-                                    NominationItemView(name: nomination.name, reasoning: nomination.reasoning)
+                                ForEach(nominationVM.nominations) { nomination in
+                                    if let nominee = nominationVM.nominees.first(where: { $0.id == nomination.nomineeID }) {
+                                        NominationItemView(name: nominee.fullName, reasoning: nomination.reason)
+                                    }
                                 }
                             }
                         }
@@ -41,42 +44,18 @@ struct ContentView: View {
                 }
                 .navigationDestination(isPresented: $showingNominationForm) {
                     NominationFormView()
+                        .environmentObject(nominationVM)
                 }
             }
             .navigationBarBackButtonHidden()
             .edgesIgnoringSafeArea(.bottom)
+            .onAppear {
+                nominationVM.getNominations()
+            }
         }
     }
 }
 
-struct Nomination: Identifiable {
-    let id: UUID
-    let name: String
-    let reasoning: String
-    
-    init(name: String, reasoning: String) {
-        self.id = UUID()
-        self.name = name
-        self.reasoning = reasoning
-    }
-    
-    static let nominations: [Nomination] = [
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player."),
-        Nomination(name: "Sam Davis", reasoning: "Always goes above and beyond when it comes to helping out the team. He's always there to help out and is a great team player.")
-    ]
-}
-
 #Preview("ContentView") {
     ContentView()
-}
-
-
-#Preview("NominationFormView") {
-    NominationFormView()
 }

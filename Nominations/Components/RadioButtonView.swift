@@ -9,31 +9,31 @@
 import SwiftUI
 
 struct RadioButtonView: View {
-    @State private var selectedKey: String? = nil
+    @EnvironmentObject var nominationVM: NominationViewModel
 
     let options = [
-        ("Very Unfair", R.image.veryUnfair.image, "veryUnfair"),
+        ("Very Unfair", R.image.veryUnfair.image, "very_unfair"),
         ("Unfair", R.image.unfair.image, "unfair"),
-        ("Not sure", R.image.notSure.image, "notSure"),
+        ("Not sure", R.image.notSure.image, "not_sure"),
         ("Fair", R.image.fair.image, "fair"),
-        ("Very Fair", R.image.veryFair.image, "veryFair"),
+        ("Very Fair", R.image.veryFair.image, "very_fair"),
     ]
     var body: some View {
         VStack(spacing: 12) {
             ForEach(options, id: \.0) { text, icon, key in
                 Rectangle()
                     .fill(Color.white)
-                    .stroke(selectedKey == key ? Color.black : Color.cubeMidGrey)
+                    .stroke(nominationVM.selectedRadioOption == key ? Color.black : Color.cubeMidGrey)
                     .frame(height: ThemeSettings.shared.buttonHeight)
-                    .shadow(selectedKey == key ? .strong : .none)
+                    .shadow(nominationVM.selectedRadioOption == key ? .strong : .none)
                     .overlay {
-                        RadioButton(text: text, icon: icon, key: key, selectedKey: $selectedKey)
+                        RadioButton(text: text, icon: icon, key: key, selectedKey: $nominationVM.selectedRadioOption)
                     }
                     .onTapGesture {
-                        if selectedKey == key {
-                            selectedKey = nil
+                        if nominationVM.selectedRadioOption == key {
+                            nominationVM.selectedRadioOption = nil
                         } else {
-                            selectedKey = key
+                            nominationVM.selectedRadioOption = key
                         }
                     }
             }

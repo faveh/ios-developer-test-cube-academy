@@ -10,6 +10,7 @@ import SwiftUI
 import BottomSheet
 
 struct NominationFormView: View {
+    @EnvironmentObject var nominationVM: NominationViewModel
     @State var warningSheetPosition: BottomSheetPosition = .hidden
     var warningSheetHeight: Double = 360
     @State var pageHeight: Double = 0
@@ -36,6 +37,7 @@ struct NominationFormView: View {
                                 
                                 NameDropdownView()
                                     .padding(.bottom, 46)
+                                    .environmentObject(nominationVM)
                                 
                                 Divider()
                                     .frame(height: 1)
@@ -46,16 +48,19 @@ struct NominationFormView: View {
                                     .padding(.bottom, 34)
                                 ReasoningTextView()
                                     .padding(.bottom, 40)
+                                    .environmentObject(nominationVM)
+
 
                                 Divider()
                                     .frame(height: 1)
                                     .overlay(.cubeMidGrey)
                                     .padding(.bottom, 40)
 
-                                RadioHeaderView(title: "I’d like to nominate THIS CUB BECAUSE...", subTitle: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?")
+                                RadioHeaderView(title: "I’d like to nominate this cube because...", subTitle: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?")
                                     .padding(.bottom, 34)
                                 RadioButtonView()
                                     .padding(.bottom, 50)
+                                    .environmentObject(nominationVM)
                             }
                             .padding(.horizontal, 16)
                         }
@@ -65,10 +70,24 @@ struct NominationFormView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .background(.cubeLightGrey)
                 .safeAreaInset(edge: .bottom) {
-                    StickyButtonView(primaryName: "submit nomination", secondaryName: "back", buttonType: .horizontalStack, primaryState: .inactive) {
-                        self.showSubmittedPage = true
+                    StickyButtonView(primaryName: "submit nomination",
+                                     secondaryName: "back",
+                                     buttonType: .horizontalStack,
+                                     primaryState: nominationVM.isValidToSubmit() ? .active : .inactive
+                    ) {
+                        if nominationVM.isValidToSubmit() {
+                            nominationVM.nominate { success in
+                                if success {
+                                    self.showSubmittedPage = true
+                                }
+                            }
+                        }
                     } secondaryAction: {
-                        self.warningSheetPosition = .relative(warningSheetHeight/proxy.size.height)
+                        if self.nominationVM.isFillingForm() {
+                            self.warningSheetPosition = .relative(warningSheetHeight/proxy.size.height)
+                        } else {
+                            self.backToHome = true
+                        }
                     }
                 }
                 .onAppear {
@@ -129,9 +148,6 @@ extension NominationFormView {
 
 #Preview {
     NominationFormView()
+        .environmentObject(NominationViewModel(service: NominationService()))
 }
-
-
-// "603|v209MdJKSkcI3eFqIkAH4nnIJ4MaKyyCgbqctMVPd8ddfaf3"
-//"authToken": "604|Nz6zljMTY6tpgmdD0RLhjKOeqFvLfcN4q31TDnQSf53aff76"
 

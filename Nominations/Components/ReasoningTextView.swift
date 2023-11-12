@@ -9,29 +9,31 @@
 import SwiftUI
 
 struct ReasoningTextView: View {
-    @State private var reasonText = ""
-    @State private var isExceedingLimit = false
-    let maxCharacter = 280
+    @EnvironmentObject var nominationVM: NominationViewModel
+    let maxCharacter = 28
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             RequiredLabelView(label: "Reasoning")
             Spacer()
                 .frame(height: 8)
-            TextEditor(text: $reasonText)
+            TextEditor(text: $nominationVM.reasonText)
                 .scrollContentBackground(.hidden)
                 .background(Color.cubeLightGrey)
                 .frame(height: 203)
-                .border(reasonText.count >= maxCharacter ? Color.systemError500 : Color.cubeMidGrey, width: 2)
+                .border(nominationVM.reasonText.count >= maxCharacter ? Color.systemError500 : Color.cubeMidGrey, width: 2)
                 .foregroundStyle(.black)
                 .style(.body)
-                .onChange(of: reasonText, initial: true) { _, newReasonText in
+                .onChange(of: nominationVM.reasonText, initial: true) { _, newReasonText in
                     if newReasonText.count > maxCharacter {
-                        reasonText = String(newReasonText.prefix(maxCharacter))
+//                        nominationVM.reasonText = String(newReasonText.prefix(maxCharacter))
+                        nominationVM.reasonExceedingLimit = true
+                    } else {
+                        nominationVM.reasonExceedingLimit = false
                     }
                 }
 
-            if reasonText.count >= maxCharacter {
+            if nominationVM.reasonText.count >= maxCharacter {
                 Text("You have exceeded the maximum character limit of \(maxCharacter).")
                     .foregroundColor(Color.systemError500)
                     .style(.errorSmall)
