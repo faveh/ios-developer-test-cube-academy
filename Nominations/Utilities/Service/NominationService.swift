@@ -12,7 +12,7 @@ import Foundation
 protocol NominationServiceProtocol {
     func getNominations(from endpoint: APIEndpoints) -> AnyPublisher<NominationsResponse, NetworkError>
     func nominate(from endpoint: APIEndpoints) -> AnyPublisher<NominationResponse, NetworkError>
-    func getNomination(from endpoint: APIEndpoints) -> AnyPublisher<Nomination, NetworkError>
+    func getNomination(from endpoint: APIEndpoints) -> AnyPublisher<SingleNominationResponse, NetworkError>
     func updateNomination(from endpoint: APIEndpoints) -> AnyPublisher<NominationResponse, NetworkError>
     func deleteNomination(from endpoint: APIEndpoints) -> AnyPublisher<DeleteNominationResponse, NetworkError>
     func getNominee(from endpoint: APIEndpoints) -> AnyPublisher<NomineesResponse, NetworkError>
@@ -25,7 +25,7 @@ class NominationService: BaseService, NominationServiceProtocol {
     }
     
     /// This method retrieves a single nomination from a given API endpoint.
-    func getNomination(from endpoint: APIEndpoints) -> AnyPublisher<Nomination, NetworkError> {
+    func getNomination(from endpoint: APIEndpoints) -> AnyPublisher<SingleNominationResponse, NetworkError> {
         return sendRequest(endpoint: endpoint)
     }
     

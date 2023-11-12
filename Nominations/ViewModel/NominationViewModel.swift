@@ -14,6 +14,7 @@ class NominationViewModel: BaseViewModel {
     private var cancellables = Set<AnyCancellable>()
 
     @Published var nominations = [Nomination]()
+    @Published var nomination: Nomination?
     @Published var nominees = [Nominee]()
     @Published var selectedRadioOption: String? = nil
     @Published var reasonText: String = ""
@@ -67,12 +68,57 @@ class NominationViewModel: BaseViewModel {
                 self?.processError(completion)
             } receiveValue: { [weak self] res in
                 self?.getNominations()
-                self?.selectedRadioOption = nil
-                self?.reasonText = ""
-                self?.selectedOption = nil
+                self?.clearForm()
                 // completion handler
                 completion(true)
             }
         self.cancellables.insert(cancellable)
+    }
+    
+    func updateNomination(nominationID: String, completion: @escaping (Bool) -> Void) {
+        let requestBody = NominationRequest(nominee_id: selectedOption, reason: reasonText, process: selectedRadioOption)
+        let cancellable = service.updateNomination(from: .updateNomination(nominationID: nominationID, requestBody: requestBody))
+            .sink { [weak self] completion in
+                self?.processError(completion)
+            } receiveValue: { [weak self] res in
+                self?.getNominations()
+                self?.clearForm()
+                // completion handler
+                completion(true)
+            }
+        self.cancellables.insert(cancellable)
+    }
+    
+    func getNomination(nominationID: String, completion: @escaping (Bool) -> Void) {
+        let cancellable = service.getNomination(from: .getNomination(nominationID: nominationID))
+            .sink { [weak self] completion in
+                self?.processError(completion)
+            } receiveValue: { [weak self] res in
+                self?.nomination = res.data
+                self?.selectedRadioOption = self?.nomination?.process
+                self?.reasonText = self?.nomination?.reason ?? ""
+                self?.selectedOption = self?.nomination?.nomineeID
+                completion(true)
+            }
+        self.cancellables.insert(cancellable)
+    }
+    
+    func deleteNomination(nominationID: String, completion: @escaping (Bool) -> Void) {
+        let cancellable = service.deleteNomination(from: .deleteNomination(nominationID: nominationID))
+            .sink { [weak self] completion in
+                self?.processError(completion)
+            } receiveValue: { [weak self] res in
+                self?.getNominations()
+                // completion handler
+                completion(true)
+            }
+        self.cancellables.insert(cancellable)
+    }
+    
+    func clearForm() {
+        self.selectedRadioOption = nil
+        self.reasonText = ""
+        self.selectedOption = nil
+        self.nomination = nil
     }
 }

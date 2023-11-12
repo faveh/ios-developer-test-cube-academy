@@ -42,3 +42,7 @@ struct NominationResponse: Codable {
 struct DeleteNominationResponse: Codable {
     let data: String
 }
+
+struct SingleNominationResponse: Codable {
+    let data: Nomination
+}
