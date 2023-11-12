@@ -23,10 +23,11 @@ struct StickyButtonView: View {
 
     var primaryState: ButtonState
     var secondaryState: ButtonState?
+    var isWarningPage: Bool = false
 
     var primaryAction: () -> Void
     var secondaryAction: (() -> Void)?
-    
+
     var body: some View {
         Rectangle()
             .fill(Color.white)
@@ -38,7 +39,7 @@ struct StickyButtonView: View {
                     case .unStackedPrimary, .unStackedSecondary:
                         createButtonView(name: primaryName, style: buttonType == .unStackedPrimary ? .primary : .secondary, state: primaryState, action: primaryAction)
                     case .verticalStack, .horizontalStack:
-                        StackedButtonView(primaryName: primaryName, secondaryName: secondaryName, primaryState: primaryState, secondaryState: secondaryState, primaryAction: primaryAction, secondaryAction: secondaryAction, isHorizontal: buttonType == .horizontalStack)
+                        StackedButtonView(primaryName: primaryName, secondaryName: secondaryName, primaryState: primaryState, secondaryState: secondaryState, primaryAction: primaryAction, secondaryAction: secondaryAction, isHorizontal: buttonType == .horizontalStack, isWarningPage: isWarningPage)
                     }
                 }
                 .padding(.horizontal, 24)
@@ -58,6 +59,7 @@ struct StackedButtonView: View {
     var primaryAction: () -> Void
     var secondaryAction: (() -> Void)?
     var isHorizontal: Bool
+    var isWarningPage: Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -71,7 +73,7 @@ struct StackedButtonView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             } else {
                 VStack(spacing: 14) {
-                    createButtonView(name: primaryName, style: .primary, state: primaryState, action: primaryAction)
+                    createButtonView(name: primaryName, style: isWarningPage ? .secondary : .primary, state: primaryState, action: primaryAction)
                     createButtonView(name: secondaryName, style: .secondary, state: secondaryState, action: secondaryAction)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -85,7 +87,5 @@ struct StackedButtonView: View {
 }
 
 #Preview("Unstacked") {
-    StickyButtonView(buttonType: .unStackedSecondary, primaryState: .loading) {
-        
-    }
+    StickyButtonView(buttonType: .unStackedSecondary, primaryState: .loading) {}
 }

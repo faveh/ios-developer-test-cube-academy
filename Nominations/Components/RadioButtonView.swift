@@ -19,17 +19,16 @@ struct RadioButtonView: View {
         ("Very Fair", R.image.veryFair.image, "veryFair"),
     ]
     var body: some View {
-        VStack {
+        VStack(spacing: 12) {
             ForEach(options, id: \.0) { text, icon, key in
                 Rectangle()
                     .fill(Color.white)
                     .stroke(selectedKey == key ? Color.black : Color.cubeMidGrey)
                     .frame(height: ThemeSettings.shared.buttonHeight)
-                    .shadow(selectedKey == key ? .strong : .light)
+                    .shadow(selectedKey == key ? .strong : .none)
                     .overlay {
                         RadioButton(text: text, icon: icon, key: key, selectedKey: $selectedKey)
                     }
-                    .padding(.bottom, 12)
                     .onTapGesture {
                         if selectedKey == key {
                             selectedKey = nil

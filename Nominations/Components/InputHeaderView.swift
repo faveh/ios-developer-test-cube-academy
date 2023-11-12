@@ -15,6 +15,7 @@ struct InputHeaderView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title.uppercased())
                 .style(.boldHeadlineSmall)
+                .multilineTextAlignment(.leading)
             Text(subTitle)
                 .style(.body)
         }

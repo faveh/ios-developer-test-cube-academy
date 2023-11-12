@@ -29,7 +29,7 @@ struct NameDropdownView: View {
                 }
             } label: {
                 Rectangle()
-                    .fill(Color.white)
+                    .fill(Color.cubeLightGrey)
                     .stroke(Color.cubeMidGrey, lineWidth: 2)
                     .frame(height: ThemeSettings.shared.buttonHeight)
                     .overlay {
