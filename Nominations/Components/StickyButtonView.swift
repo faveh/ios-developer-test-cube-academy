@@ -83,7 +83,7 @@ struct StackedButtonView: View {
 }
 
 #Preview("Stacked") {
-    StickyButtonView(primaryName: "Next", secondaryName: "Back", buttonType: .horizontalStack, primaryState: .active, secondaryState: .inactive, primaryAction: {}, secondaryAction: {})
+    StickyButtonView(primaryName: FormConstants.next, secondaryName: FormConstants.backButtonTitle, buttonType: .horizontalStack, primaryState: .active, secondaryState: .inactive, primaryAction: {}, secondaryAction: {})
 }
 
 #Preview("Unstacked") {

@@ -76,7 +76,7 @@ extension APIBuilder {
     */
     func makeRequest<T: Codable>(requestBody: T, query: String = "", method: RequestMethod, requestPath: String) -> URLRequest {
         guard let url = URL(string: self.baseURL + requestPath + query) else {
-            fatalError("Invalid URL")
+            fatalError(ErrorConstants.inValidURL)
         }
         
         var request = URLRequest(url: url)
@@ -87,7 +87,7 @@ extension APIBuilder {
             let jsonData = try JSONEncoder().encode(requestBody)
             request.httpBody = jsonData
         } catch {
-            print("Failed to encode requestBody: \(error)")
+            print("\(ErrorConstants.encodeError) \(error)")
         }
         
         addAuthToken(request: &request)

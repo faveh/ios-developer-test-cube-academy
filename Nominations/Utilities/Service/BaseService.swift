@@ -58,7 +58,7 @@ class BaseService {
     func handleErrorResponse<T: Decodable>(data: Data, statusCode: Int) -> AnyPublisher<T, NetworkError> {
         do {
             let errorResponse: ErrorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
-            return Fail(error: .custom(errorMessage: errorResponse.error ?? "Error"))
+            return Fail(error: .custom(errorMessage: errorResponse.error ?? ErrorConstants.error))
                 .eraseToAnyPublisher()
         } catch {
             return Fail(error: .errorCode(statusCode)).eraseToAnyPublisher()
@@ -79,15 +79,15 @@ extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
             case .decodingError:
-                return "Failed to decode the error from the API"
+            return ErrorConstants.decodingError
             case .errorCode(let code):
-                return "\(code) - Something went wrong"
+            return "\(code) - \(ErrorConstants.errorCode)"
             case .invalidCredentials:
-                return "Invalid Credentials"
+            return ErrorConstants.invalidCredentials
             case .custom(let message):
-                return "Error: \(message)"
+            return "\(ErrorConstants.error): \(message)"
             case .unknown:
-                return "The error is unknown"
+            return ErrorConstants.unknown
         }
     }
 }

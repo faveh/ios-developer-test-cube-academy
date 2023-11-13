@@ -18,7 +18,7 @@ struct SubmittedView: View {
         NavigationStack {
             GeometryReader { proxy in
                 VStack(spacing: 0) {
-                    HeaderBarView(title: "Nomination Submitted")
+                    HeaderBarView(title: FormConstants.submitted)
                     ScrollView {
                         LazyVStack(alignment: .center, spacing: 0) {
                             R.image.nominationBanner2.image
@@ -27,12 +27,12 @@ struct SubmittedView: View {
                                 .padding(.bottom, 30)
 
                             Group {
-                                Text("Nomination submitted".uppercased())
+                                Text(FormConstants.submitted.uppercased())
                                     .style(.boldHeadlineLarge)
                                     .multilineTextAlignment(.center)
                                     .padding(.bottom, 12)
                                 
-                                Text("Thank you for taking the time to fill out this form! Why not nominate another cube?")
+                                Text(FormConstants.thankYou)
                                     .style(.body)
                                     .multilineTextAlignment(.center)
                                     .padding(.bottom, 34)
@@ -45,7 +45,7 @@ struct SubmittedView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .background(.cubeLightGrey)
                 .safeAreaInset(edge: .bottom) {
-                    StickyButtonView(primaryName: "create new nomination", secondaryName: "back to home", buttonType: .verticalStack, primaryState: .active) {
+                    StickyButtonView(primaryName: FormConstants.createNewNomination, secondaryName: FormConstants.backToHome, buttonType: .verticalStack, primaryState: .active) {
                         self.showCreateNominationPage = true
                     } secondaryAction: {
                         self.backToHome = true

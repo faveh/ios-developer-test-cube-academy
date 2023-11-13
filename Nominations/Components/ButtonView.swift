@@ -102,7 +102,7 @@ extension ButtonView {
 }
 
 #Preview {
-    ButtonView(name: "Primary", style: .secondary, state: .pressed) {
+    ButtonView(name: FormConstants.primary, style: .secondary, state: .pressed) {
         
     }
 }

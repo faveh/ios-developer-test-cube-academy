@@ -20,6 +20,8 @@ class NominationViewModel: BaseViewModel {
     @Published var reasonText: String = ""
     @Published var reasonExceedingLimit: Bool = false
     @Published var selectedOption: String? = nil
+    @Published var isLoading: Bool = false
+    @Published var isSubmitting: Bool = false
 
     init(service: NominationService) {
         self.service = service
@@ -42,11 +44,14 @@ class NominationViewModel: BaseViewModel {
     }
     
     func getNominations() {
+        isLoading = true
         let cancellable = service.getNominations(from: .getAllNominations)
             .sink { [weak self] completion in
                 self?.processError(completion)
+                self?.isLoading = false
             } receiveValue: { [weak self] nominations in
                 self?.nominations = nominations.data ?? []
+                self?.isLoading = false
             }
         self.cancellables.insert(cancellable)
     }
@@ -62,13 +67,16 @@ class NominationViewModel: BaseViewModel {
     }
     
     func nominate(completion: @escaping (Bool) -> Void) {
+        isSubmitting = true
         let requestBody = NominationRequest(nominee_id: selectedOption, reason: reasonText, process: selectedRadioOption)
         let cancellable = service.nominate(from: .createNomination(requestBody: requestBody))
             .sink { [weak self] completion in
                 self?.processError(completion)
+                self?.isSubmitting = false
             } receiveValue: { [weak self] res in
                 self?.getNominations()
                 self?.clearForm()
+                self?.isSubmitting = true
                 // completion handler
                 completion(true)
             }

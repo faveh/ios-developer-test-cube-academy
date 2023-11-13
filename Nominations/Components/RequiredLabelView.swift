@@ -13,7 +13,7 @@ struct RequiredLabelView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 2) {
-            Text("*")
+            Text(FormConstants.asterik)
                 .foregroundStyle(.cubePink2)
             Text(label)
         }
@@ -22,5 +22,5 @@ struct RequiredLabelView: View {
 }
 
 #Preview {
-    RequiredLabelView(label: "Cube Name")
+    RequiredLabelView(label: FormConstants.cubeName)
 }

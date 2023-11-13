@@ -11,16 +11,9 @@ import SwiftUI
 struct RadioButtonView: View {
     @EnvironmentObject var nominationVM: NominationViewModel
 
-    let options = [
-        ("Very Unfair", R.image.veryUnfair.image, "very_unfair"),
-        ("Unfair", R.image.unfair.image, "unfair"),
-        ("Not sure", R.image.notSure.image, "not_sure"),
-        ("Fair", R.image.fair.image, "fair"),
-        ("Very Fair", R.image.veryFair.image, "very_fair"),
-    ]
     var body: some View {
         VStack(spacing: 12) {
-            ForEach(options, id: \.0) { text, icon, key in
+            ForEach(FormConstants.options, id: \.0) { text, icon, key in
                 Rectangle()
                     .fill(Color.white)
                     .stroke(nominationVM.selectedRadioOption == key ? Color.black : Color.cubeMidGrey)

@@ -12,11 +12,11 @@ struct NameDropdownView: View {
     @EnvironmentObject var nominationVM: NominationViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            RequiredLabelView(label: "Cube's name")
+            RequiredLabelView(label: FormConstants.cubeName)
             Spacer()
                 .frame(height: 8)
             Menu {
-                Picker("nominees", selection: $nominationVM.selectedOption) {
+                Picker(FormConstants.nominees, selection: $nominationVM.selectedOption) {
                     ForEach(nominationVM.nominees) { nominee in
                         Text(nominee.fullName)
                     }
@@ -32,7 +32,7 @@ struct NameDropdownView: View {
                                 Text(nominee.fullName)
                                     .style(.body)
                             } else {
-                                Text("Select Option")
+                                Text(FormConstants.selectOption)
                                     .style(.body)
                             }
                             Spacer()

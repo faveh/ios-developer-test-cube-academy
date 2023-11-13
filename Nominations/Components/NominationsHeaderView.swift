@@ -11,7 +11,7 @@ import SwiftUI
 /// Header view used on the nominations screen.
 struct NominationsHeaderView: View {
     var body: some View {
-        Text("Your nominations")
+        Text(HomeConstants.yourNomination)
             .textCase(.uppercase)
             .style(.boldHeadlineMedium)
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -23,27 +23,25 @@ struct InputHeaderView: View {
 }
 
 #Preview("InputHeaderView") {
-    InputHeaderView(title: "I’d like to nominate...", subTitle: "Please select a cube who you feel has done something honourable this month or just all round has a great work ethic.")
+    InputHeaderView(title: FormConstants.nominateThisCubeTitle, subTitle: FormConstants.nominateThisCubeSubtitle)
 }
 
 struct RadioHeaderView: View {
-    var title: String
-    var subTitle: String
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Group {
-                Text("Is how we currently run ".uppercased())
+                Text(FormConstants.radioHeaderText1)
                     .foregroundStyle(.black)
-                + Text("cube of the month ".uppercased()).foregroundStyle(.cubePink)
-                + Text("fair?".uppercased()).foregroundStyle(.black)
+                + Text(FormConstants.radioHeaderText2).foregroundStyle(.cubePink)
+                + Text(FormConstants.radioHeaderText3).foregroundStyle(.black)
             }
             .style(.boldHeadlineSmallest)
-            Text(subTitle)
+            Text(FormConstants.radioSubtitle)
                 .style(.body)
         }
     }
 }
 
 #Preview("RadioHeaderView") {
-    RadioHeaderView(title: "I’d like to nominate...", subTitle: "Please select a cube who you feel has done something honourable this month or just all round has a great work ethic.")
+    RadioHeaderView()
 }

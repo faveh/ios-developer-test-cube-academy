@@ -16,7 +16,7 @@ struct EmptyNominationsView: View {
             R.image.emptyCart.image
                 .resizable()
                 .frame(width: 88, height: 62)
-            Text("once you submit a nomination, you will be able to SEE it here.".uppercased())
+            Text(FormConstants.emptyTitle)
                 .style(.boldHeadlineMedium)
                 .foregroundColor(.cubeDarkGrey)
                 .multilineTextAlignment(.center)

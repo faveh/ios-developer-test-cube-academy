@@ -12,7 +12,7 @@ import BottomSheet
 struct NominationFormView: View {
     @EnvironmentObject var nominationVM: NominationViewModel
     @State var warningSheetPosition: BottomSheetPosition = .hidden
-    var warningSheetHeight: Double = 360
+    var warningSheetHeight: Double = FormConstants.warningSheetHeight
     @State var pageHeight: Double = 0
     @State var backToHome = false
     @State var showSubmittedPage = false
@@ -23,7 +23,7 @@ struct NominationFormView: View {
         NavigationStack {
             GeometryReader { proxy in
                 VStack(spacing: 0) {
-                    HeaderBarView(title: "Create a new nomination")
+                    HeaderBarView(title: FormConstants.createNominationTitle)
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 0) {
                             R.image.nominationBanner.image
@@ -32,7 +32,7 @@ struct NominationFormView: View {
                                 .padding(.bottom, 30)
 
                             Group {
-                                InputHeaderView(title: "I’d like to nominate...", subTitle: "Please select a cube who you feel has done something honourable this month or just all round has a great work ethic.")
+                                InputHeaderView(title: FormConstants.nominateTitle, subTitle: FormConstants.nominateSubtitle)
                                     .padding(.bottom, 30)
                                 
                                 NameDropdownView()
@@ -44,7 +44,7 @@ struct NominationFormView: View {
                                     .overlay(.cubeMidGrey)
                                     .padding(.bottom, 40)
 
-                                InputHeaderView(title: "I’d like to nominate THIS CUB BECAUSE...", subTitle: "Please let us know why you think this cube deserves the ‘cube of the month’ title 🏆⭐")
+                                InputHeaderView(title: FormConstants.nominateThisCubeTitle, subTitle: FormConstants.nominateThisCubeSubtitle)
                                     .padding(.bottom, 34)
                                 ReasoningTextView()
                                     .padding(.bottom, 40)
@@ -56,7 +56,7 @@ struct NominationFormView: View {
                                     .overlay(.cubeMidGrey)
                                     .padding(.bottom, 40)
 
-                                RadioHeaderView(title: "I’d like to nominate this cube because...", subTitle: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?")
+                                RadioHeaderView()
                                     .padding(.bottom, 34)
                                 RadioButtonView()
                                     .padding(.bottom, 50)
@@ -70,10 +70,10 @@ struct NominationFormView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .background(.cubeLightGrey)
                 .safeAreaInset(edge: .bottom) {
-                    StickyButtonView(primaryName: "submit nomination",
-                                     secondaryName: "back",
+                    StickyButtonView(primaryName: FormConstants.submitNominationButtonTitle,
+                                     secondaryName: FormConstants.backButtonTitle,
                                      buttonType: .horizontalStack,
-                                     primaryState: nominationVM.isValidToSubmit() ? .active : .inactive
+                                     primaryState: nominationVM.isSubmitting ? .loading : (nominationVM.isValidToSubmit() ? .active : .inactive)
                     ) {
                         if nominationVM.isValidToSubmit() {
                             nominationVM.nominate { success in
@@ -126,16 +126,16 @@ extension NominationFormView {
             Spacer()
                 .frame(height: 24)
             Group {
-                Text("Are you sure?".uppercased())
+                Text(FormConstants.confirmTitle.uppercased())
                     .style(.boldHeadlineSmall)
                     .padding(.bottom, 18)
-                Text("If you leave this page, you will loose any progress made.")
+                Text(FormConstants.confirmSubtitle)
                     .style(.body)
                     .padding(.bottom, 60)
             }
             .padding(.horizontal, 24)
             
-            StickyButtonView(primaryName: "yes, leave page", secondaryName: "cancel", buttonType: .verticalStack, primaryState: .active, secondaryState: .active, isWarningPage: true) {
+            StickyButtonView(primaryName: FormConstants.leavePage, secondaryName: FormConstants.cancel, buttonType: .verticalStack, primaryState: .active, secondaryState: .active, isWarningPage: true) {
                 self.backToHome = true
                 self.warningSheetPosition = .hidden
             } secondaryAction: {

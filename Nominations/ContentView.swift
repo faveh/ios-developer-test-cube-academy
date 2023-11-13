@@ -23,7 +23,9 @@ struct ContentView: View {
                         LazyVStack(spacing: 0) {
                             NominationsHeaderView()
                             
-                            if nominationVM.nominations.isEmpty {
+                            if nominationVM.isLoading {
+                                EmptyView()
+                            } else if nominationVM.nominations.isEmpty {
                                 EmptyNominationsView()
                             } else {
                                 ForEach(nominationVM.nominations) { nomination in
@@ -44,9 +46,9 @@ struct ContentView: View {
                     .scrollIndicators(.hidden)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .background(.cubeLightGrey)
+                .background(.white)
                 .safeAreaInset(edge: .bottom) {
-                    StickyButtonView(primaryName: "create new nomination", buttonType: .unStackedPrimary, primaryState: .active) {
+                    StickyButtonView(primaryName: HomeConstants.createButton, buttonType: .unStackedPrimary, primaryState: .active) {
                         self.showingNominationForm = true
                     }
                 }
